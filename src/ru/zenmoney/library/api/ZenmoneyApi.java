@@ -12,6 +12,7 @@ import ru.zenmoney.library.api.commons.DefaultDiffChangeListener;
 import ru.zenmoney.library.api.commons.Revision;
 import ru.zenmoney.library.api.v1.Instrument;
 import ru.zenmoney.library.api.v2.Diff;
+import ru.zenmoney.library.dal.DatabaseHelper;
 import ru.zenmoney.library.dal.model.AbstractModel;
 
 import java.util.HashMap;
@@ -53,6 +54,7 @@ public class ZenmoneyApi extends DefaultApi10a {
 
     public static void setApplicationToken(Context context, String key, String secret) {
         ZenmoneyApi.context = context;
+        new DatabaseHelper(context);
         APP_KEY = key;
         APP_SECRET = secret;
         settings = new OAuthSettings(context);

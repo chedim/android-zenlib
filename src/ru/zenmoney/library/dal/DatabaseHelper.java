@@ -17,9 +17,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     protected static int conns;
     protected static Context context;
     protected static DatabaseHelper instance;
+    protected static String[] structure = DbInit.sql;
+
+    protected void setStructure(String[] sql) {
+        structure = sql;
+    }
 
     public DatabaseHelper (Context context) {
-        super(context, DB_NAME, null, DbInit.sql.length);
+        super(context, DB_NAME, null, structure.length);
         this.context = context;
         instance = this;
     }
@@ -64,10 +69,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        int queryCount = DbInit.sql.length;
+        int queryCount = structure.length;
         db.beginTransaction();
         for (int i = 0; i<queryCount; i++) {
-            db.execSQL(DbInit.sql[i]);
+            db.execSQL(structure[i]);
         }
         db.setTransactionSuccessful();
         db.endTransaction();
@@ -77,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         for (int i = oldVersion; i < newVersion; i++) {
-            db.execSQL(DbInit.sql[i]);
+            db.execSQL(structure[i]);
         }
     }
 

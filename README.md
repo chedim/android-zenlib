@@ -3,7 +3,7 @@ android-zenlib
 
 Библиотека интеграции с zenmoney.ru
 
-версия: 0.1 ([Скачать jar](out/artifacts/Android_Zenmoney_Library_jar/ru.zenmoney.library.jar))
+версия: 0.1 ([Скачать jar](android_zenlib_jar/android-zenlib.jar))
 
 На данный момент поддерживает:
 - [x] Создание БД со структурой, достаточной для добавления/редактирования транзакций, категорий, счетов
@@ -20,6 +20,13 @@ android-zenlib
 * scribe OAuth
 
 ## Примеры использования: ##
+
+## Инициализация ###
+```java
+    ZenmoneyApi.setApplicationToken(this, APP_KEY, APP_SECRET);
+```
+
+Если необходимо использовать дополнительные таблицы, создайте массив SQL-запросов ([как в этом классе](src/ru/zenmoney/library/dal/DbInit.java)) и передайте его методу DatabaseHelper.setStructure перед инициализацией библиотеки
 
 ### Авторизация ###
 ```java
