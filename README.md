@@ -6,9 +6,9 @@ android-zenlib
 версия: 0.1
 
 На данный момент поддерживает:
-- [x] Создание БД со структурой, достаточной для добавления/редактирования транзакций, категорий, счетов
-— [x] Синхронизацию валют
-— [x] Синхронизацию БД через /v2/sync
+[x] Создание БД со структурой, достаточной для добавления/редактирования транзакций, категорий, счетов
+[x] Синхронизацию валют
+[x] Синхронизацию БД через /v2/sync
 
 ## Примеры использования: ##
 
@@ -62,3 +62,51 @@ public class AuthActivity extends ru.zenmoney.library.api.AuthActivity {
 
     ZenmoneyApi.sync(structure);
 ```
+
+### Добавление объекта ###
+```java
+    Account account = new Account();
+    account.put("title", "Первый счет");
+    account.put("instrument", 2l);
+    account.put("balance", BigDecimal.ZERO);
+    account.put("type", "cash");
+    account.save();
+    Transaction transaction = new Transaction();
+    transaction.put("account_income", account.getKey());
+    transaction.put("account_outcome", account.getKey());
+    transaction.put("income", new BigDecimal("1000000"));
+    transaction.put("outcome", BigDecimal.ZERO);
+    transaction.put("comment", "Я миллионер!");
+    transaction.save();
+```
+
+### Поиск объектов ###
+```java
+    RowSet transactions = new RowSet(Transaction.class);
+    RowSet.addQueryResult("account_income = ?", new String[] {"1"});
+```
+
+```java
+    Transaction transaction = new Transaction();
+    transaction.loadByKey(1);
+```
+
+```java
+    Cursor c = DatabaseHelper.getWritableConnection().rawQuery("SELECT * FROM `transaction` WHERE _id = 1");
+    Transaction transaction = new Transaction(c);
+```
+
+### Удаление объектов ###
+```java
+    Transaction transaction = new Transaction();
+    transaction.loadByKey(1);
+    transaction.delete();
+```
+
+```java
+    RowSet transactions = new RowSet(Transaction.class);
+    RowSet.addQueryResult("account_income = ?", new String[] {"1"});
+    rowset.delete();
+```
+
+

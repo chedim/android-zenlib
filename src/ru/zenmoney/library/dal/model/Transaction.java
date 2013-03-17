@@ -1,6 +1,7 @@
 package ru.zenmoney.library.dal.model;
 
 import android.database.Cursor;
+import ru.zenmoney.library.dal.DatabaseHelper;
 import ru.zenmoney.library.dal.trigger.TransactionTrigger;
 
 import java.math.BigDecimal;

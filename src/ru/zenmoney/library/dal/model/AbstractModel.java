@@ -407,6 +407,4 @@ public abstract class AbstractModel {
         }
     }
 
-    ;
-
 }
