@@ -10,8 +10,6 @@ android-zenlib
 - [x] Синхронизацию валют
 - [x] Синхронизацию БД через /v2/sync
 
-Поддержка: chedim@chedim.ru
-
 ## Включенные зависимости: ##
 * commons-codec-1.7
 * httpcore-4.2.3
