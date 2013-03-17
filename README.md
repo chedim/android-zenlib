@@ -6,9 +6,18 @@ android-zenlib
 версия: 0.1
 
 На данный момент поддерживает:
-[x] Создание БД со структурой, достаточной для добавления/редактирования транзакций, категорий, счетов
-[x] Синхронизацию валют
-[x] Синхронизацию БД через /v2/sync
+- [x] Создание БД со структурой, достаточной для добавления/редактирования транзакций, категорий, счетов
+- [x] Синхронизацию валют
+- [x] Синхронизацию БД через /v2/sync
+
+Поддержка: chedim@chedim.ru
+
+## Включенные зависимости: ##
+* commons-codec-1.7
+* httpcore-4.2.3
+* jackson-core-2.1.4
+* pojava-2.8.1
+* scribe OAuth
 
 ## Примеры использования: ##
 
@@ -108,5 +117,4 @@ public class AuthActivity extends ru.zenmoney.library.api.AuthActivity {
     RowSet.addQueryResult("account_income = ?", new String[] {"1"});
     rowset.delete();
 ```
-
 
