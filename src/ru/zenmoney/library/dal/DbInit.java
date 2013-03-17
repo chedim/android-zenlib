@@ -23,11 +23,8 @@ public class DbInit {
             "CREATE TABLE connection_data (_id INTEGER PRIMARY KEY, id integer, user integer, connection integer, name text, value text, account integer, active integer, error_text text, changed integer DEFAULT CURRENT_TIMESTAMP);",
             "INSERT INTO account (balance, sum, title, type, static_id, instrument) VALUES (0, 0, 'Наличные', 'cash', 18, 2);",
             "INSERT INTO account (balance, sum, title, type, static_id, instrument) VALUES (0, 0, 'Долги', 'debt', 3, 2);",
-            // ^^ 15th element, version 1
             "CREATE TABLE deletion (object STRING, object_id LONG, stamp LONG DEFAULT CURRENT_TIMESTAMP);",
-            // ^^ 16th element, version 2
             "CREATE TABLE instrument_rate (_id INTEGER PRIMARY KEY AUTOINCREMENT, id INTEGER, date TEXT, multiplier INTEGER, rate REAL, rate_3m TEXT, source INTEGER, target INTEGER);",
-            // ^^ 17th element, version 3
             "INSERT INTO instrument (id, title, title_short, symbol, rub_rate) VALUES (2, 'Российский рубль', 'RUB', 'руб.', 1);"
     };
 }
